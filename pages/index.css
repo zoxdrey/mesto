@@ -1,1 +1,4 @@
 @import "../vendor/normalize.css";
+
+@import "../blocks/page/page.css";
+@import "../blocks/page/__wrapper/page__wrapper.css";
