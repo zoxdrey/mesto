@@ -1,3 +1,5 @@
 .header__logo {
   margin-bottom: 41px;
+  max-width: 142px;
+  max-height: 33;
 }
