@@ -9,7 +9,13 @@
 @import "../blocks/header/__line/header__line.css";
 
 @import "../blocks/profile/profile.css";
+@import "../blocks/profile/__avatar/profile__avatar.css";
+@import "../blocks/profile/__wrapper/profile__wrapper.css";
+@import "../blocks/profile/__add-button/profile__add-button.css";
 
-@import "../blocks/profile-info/__avatar/profile__avatar.css";
-@import "../blocks/profile-info/__title/profile-info__title.css";
 @import "../blocks/profile-info/profile-info.css";
+@import "../blocks/profile-info/__title/profile-info__title.css";
+@import "../blocks/profile-info/__text/profile-info__text.css";
+@import "../blocks/profile-info/__header/profile-info__header.css";
+@import "../blocks/profile-info/__subtitle/profile-info__subtitle.css";
+@import "../blocks/profile-info/__edit-button/profile-info__edit-button.css";
