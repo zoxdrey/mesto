@@ -26,3 +26,6 @@
 @import "../blocks/photo-card/__title/photo-card__title.css";
 @import "../blocks/photo-card/__like/photo-card__like.css";
 @import "../blocks/photo-card/__image/photo-card__image.css";
+
+@import "../blocks/footer/__copyright/footer__copyright.css";
+@import "../blocks/footer/footer.css";
