@@ -19,3 +19,10 @@
 @import "../blocks/profile-info/__header/profile-info__header.css";
 @import "../blocks/profile-info/__subtitle/profile-info__subtitle.css";
 @import "../blocks/profile-info/__edit-button/profile-info__edit-button.css";
+
+@import "../blocks/photo-grid/photo-grid.css";
+@import "../blocks/photo-card/photo-card.css";
+@import "../blocks/photo-card/__header/photo-card__header.css";
+@import "../blocks/photo-card/__title/photo-card__title.css";
+@import "../blocks/photo-card/__like/photo-card__like.css";
+@import "../blocks/photo-card/__image/photo-card__image.css";
