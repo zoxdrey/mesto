@@ -1,7 +1,14 @@
 .profile {
   display: flex;
+  flex-direction: column;
   margin: 36px 0 47px 0;
   font-family: "Inter", sans-serif;
   color: #ffffff;
   justify-content: space-between;
+}
+
+@media (min-width: 465px) {
+  .profile {
+    flex-direction: row;
+  }
 }
