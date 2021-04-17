@@ -1,0 +1,5 @@
+.photo-card__like {
+  background-image: url("../../../images/like.svg");
+  background-repeat: no-repeat;
+  width: 22px;
+}
