@@ -10,120 +10,174 @@
     <div class="page">
       <div class="page__wrapper">
         <header class="header">
-          <img class="header__logo" src="./images/logo.svg" alt="Логотип" />
-          <hr class="header__line" />
+          <img
+            class="header__logo"
+            src="./images/logo.svg"
+            alt="Пользовательский аватар"
+          />
+          <div class="header__line"></div>
         </header>
-
-        <section class="profile">
-          <div class="profile__wrapper">
-            <img
-              class="profile__avatar"
-              src="./images/custo-avatar.png"
-              alt="Кусто"
-            />
-            <div class="profile-info">
-              <div class="profile-info__text">
-                <div class="profile-info__header">
-                  <h1 class="profile-info__title">Жак-Ив Кусто</h1>
-                  <button class="profile-info__edit-button"></button>
+        <main class="main-content">
+          <section class="profile">
+            <div class="profile__wrapper">
+              <img
+                class="profile__avatar"
+                src="./images/custo-avatar.png"
+                alt="Кусто"
+              />
+              <div class="profile-info">
+                <div class="profile-info__text">
+                  <div class="profile-info__header">
+                    <h1 class="profile-info__title">Жак-Ив Кусто</h1>
+                    <button
+                      class="profile-info__edit-button"
+                      aria-label="Edit"
+                      type="button"
+                    ></button>
+                  </div>
+                  <p class="profile-info__subtitle">Исследователь океана</p>
                 </div>
-                <p class="profile-info__subtitle">Исследователь океана</p>
               </div>
             </div>
-          </div>
-          <button class="profile__add-button"></button>
-        </section>
+            <button
+              class="profile__add-button"
+              aria-label="Add"
+              type="button"
+            ></button>
+          </section>
 
-        <section class="photo-grid">
-          <ul class="photo-cards-list">
-            <li class="photo-card">
-              <img
-                class="photo-card__image"
-                src="./images/Moscow.jpg"
-                alt="Москва"
-              />
-              <div class="photo-card__header">
-                <h2 class="photo-card__title">Москва</h2>
-                <div class="photo-card__like"></div>
-              </div>
-            </li>
+          <section class="photo-grid">
+            <ul class="photo-cards-list">
+              <li class="photo-card">
+                <img
+                  class="photo-card__image"
+                  src="./images/Moscow.jpg"
+                  alt="Москва"
+                />
+                <div class="photo-card__header">
+                  <h2 class="photo-card__title">Москва</h2>
+                  <button
+                    class="photo-card__like"
+                    type="default"
+                    area-label="Like"
+                  ></button>
+                </div>
+              </li>
 
-            <li class="photo-card">
-              <img
-                class="photo-card__image"
-                src="./images/n_novgorod.jpg"
-                alt="Нижний Новгород"
-              />
-              <div class="photo-card__header">
-                <h2 class="photo-card__title">Нижний Новгород</h2>
-                <div class="photo-card__like"></div>
-              </div>
-            </li>
+              <li class="photo-card">
+                <img
+                  class="photo-card__image"
+                  src="./images/n_novgorod.jpg"
+                  alt="Нижний Новгород"
+                />
+                <div class="photo-card__header">
+                  <h2 class="photo-card__title">Нижний Новгород</h2>
+                  <button
+                    class="photo-card__like"
+                    type="default"
+                    area-label="Like"
+                  ></button>
+                </div>
+              </li>
 
-            <li class="photo-card">
-              <img
-                class="photo-card__image"
-                src="./images/novosibirsk.jpg"
-                alt="Новосибирск"
-              />
-              <div class="photo-card__header">
-                <h2 class="photo-card__title">Новосибирск</h2>
-                <div class="photo-card__like"></div>
-              </div>
-            </li>
+              <li class="photo-card">
+                <img
+                  class="photo-card__image"
+                  src="./images/novosibirsk.jpg"
+                  alt="Новосибирск"
+                />
+                <div class="photo-card__header">
+                  <h2 class="photo-card__title">Новосибирск</h2>
+                  <button
+                    class="photo-card__like"
+                    type="default"
+                    area-label="Like"
+                  ></button>
+                </div>
+              </li>
 
-            <li class="photo-card">
-              <img
-                class="photo-card__image"
-                src="./images/Kazan_Kremlin.jpg"
-                alt="Казань"
-              />
-              <div class="photo-card__header">
-                <h2 class="photo-card__title">Казань</h2>
-                <div class="photo-card__like"></div>
-              </div>
-            </li>
+              <li class="photo-card">
+                <img
+                  class="photo-card__image"
+                  src="./images/Kazan_Kremlin.jpg"
+                  alt="Казань"
+                />
+                <div class="photo-card__header">
+                  <h2 class="photo-card__title">Казань</h2>
+                  <button
+                    class="photo-card__like"
+                    type="default"
+                    area-label="Like"
+                  ></button>
+                </div>
+              </li>
 
-            <li class="photo-card">
-              <img
-                class="photo-card__image"
-                src="./images/st_petersburg.jpg"
-                alt="Санкт-Петербург"
-              />
-              <div class="photo-card__header">
-                <h2 class="photo-card__title">Санкт-Петербург</h2>
-                <div class="photo-card__like"></div>
-              </div>
-            </li>
+              <li class="photo-card">
+                <img
+                  class="photo-card__image"
+                  src="./images/st_petersburg.jpg"
+                  alt="Санкт-Петербург"
+                />
+                <div class="photo-card__header">
+                  <h2 class="photo-card__title">Санкт-Петербург</h2>
+                  <button
+                    class="photo-card__like"
+                    type="default"
+                    area-label="Like"
+                  ></button>
+                </div>
+              </li>
 
-            <li class="photo-card">
-              <img
-                class="photo-card__image"
-                src="./images/ekaterinburg.jpg"
-                alt="Екатеринбург"
-              />
-              <div class="photo-card__header">
-                <h2 class="photo-card__title">Екатеринбург</h2>
-                <div class="photo-card__like"></div>
-              </div>
-            </li>
-          </ul>
-        </section>
-
+              <li class="photo-card">
+                <img
+                  class="photo-card__image"
+                  src="./images/ekaterinburg.jpg"
+                  alt="Екатеринбург"
+                />
+                <div class="photo-card__header">
+                  <h2 class="photo-card__title">Екатеринбург</h2>
+                  <button
+                    class="photo-card__like"
+                    type="default"
+                    area-label="Like"
+                  ></button>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </main>
         <footer class="footer">
-          <div class="footer__copyright">&#169;2020 Mesto Russia</div>
+          <p class="footer__copyright">&#169;2020 Mesto Russia</p>
         </footer>
       </div>
     </div>
 
     <div class="popup">
       <div class="popup__container">
-        <div class="popup__close-icon"></div>
-        <form class="popup__form">
-          <div class="popup__form-title">Редактировать профиль</div>
-          <input class="popup__form-name" value="" />
-          <input class="popup__form-profession" value="" />
-          <button class="popup__form-submit-button">Сохранить</button>
+        <button
+          class="popup__close-icon"
+          type="default"
+          aria-label="Close"
+        ></button>
+        <form class="popup__form" name="popup-form">
+          <h2 class="popup__form-title">Редактировать профиль</h2>
+          <input
+            class="popup__form-input popup__form-input_data_user-name"
+            name="user-name"
+            value=""
+          />
+          <input
+            class="popup__form-input popup__form-input_data_user-profession"
+            name="user-profession"
+            value=""
+          />
+          <button
+            class="popup__form-submit-button"
+            type="submit"
+            aria-label="Save"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </div>

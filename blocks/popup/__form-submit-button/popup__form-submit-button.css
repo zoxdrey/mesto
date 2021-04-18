@@ -1,5 +1,5 @@
 .popup__form-submit-button {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -9,6 +9,7 @@
   color: #ffffff;
   border: 0;
   height: 50px;
+  border-radius: 2px;
 }
 
 .popup__form-submit-button:hover {

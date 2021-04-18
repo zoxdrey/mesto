@@ -2,6 +2,7 @@
   background: transparent url("../../../images/like.svg") center no-repeat;
   width: 22px;
   cursor: pointer;
+  border: none;
 }
 
 .photo-card__like:hover {

@@ -1,5 +1,5 @@
-.popup__form-name {
-  font-family: "Inter", sans-serif;
+.popup__form-input {
+  font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -10,4 +10,8 @@
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
+}
+
+.popup__form-input:last-of-type {
+  margin-bottom: 45px;
 }
