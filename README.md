@@ -4,11 +4,11 @@
 
 Проект разработан в рамках обучения на курсах Яндекс Практикум
 
-*html5
-*css
-*bem
-*nested bem
+- HTML5/CSS
+- Блочная модель верстки
+- Организация верстки - БЭМ
+- Файловая структура - Nested БЭМ
 
 **demo**
 
-- [live demo](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+- [live demo](https://zoxdrey.github.io/mesto/)
