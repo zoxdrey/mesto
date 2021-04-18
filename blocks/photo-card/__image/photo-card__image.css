@@ -3,4 +3,6 @@
   border-radius: 10px 10px 0px 0px;
   height: 282px;
   object-fit: cover;
+  margin-bottom: 0;
+  display: block;
 }

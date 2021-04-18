@@ -2,8 +2,16 @@
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
-  margin-bottom: 54px;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 75px;
   color: #000000;
+}
+
+@media (min-width: 465px) {
+  .popup__form {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 54px;
+  }
 }

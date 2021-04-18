@@ -1,6 +1,13 @@
 .profile-info {
   display: flex;
-  max-width: 336px;
+  max-width: 282px;
+
   flex-direction: column;
   justify-content: center;
+}
+
+@media (min-width: 465px) {
+  .profile-info {
+    max-width: 336px;
+  }
 }
