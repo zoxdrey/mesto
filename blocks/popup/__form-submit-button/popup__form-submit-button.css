@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 465px) {
+@media (min-width: 768px) {
   .popup__form-submit-button {
     font-size: 18px;
     line-height: 22px;

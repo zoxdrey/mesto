@@ -1,13 +1,14 @@
 .profile-info {
   display: flex;
-  max-width: 282px;
-
   flex-direction: column;
   justify-content: center;
+  margin-top: 22px;
+  margin-bottom: 36px;
 }
 
-@media (min-width: 465px) {
+@media (min-width: 768px) {
   .profile-info {
-    max-width: 336px;
+    flex-direction: row;
+    margin: 0;
   }
 }

@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-@media (min-width: 465px) {
+@media (min-width: 768px) {
   .popup__form {
     padding: 36px;
     width: 430px;
