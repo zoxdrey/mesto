@@ -10,30 +10,21 @@ let profileProfession = document.querySelector(".profile-info__subtitle");
 let popupForm = document.querySelector(".popup__form");
 
 let openPopup = () => {
-  if (!isOpened()) {
     formName.value = profileName.textContent;
     formProfession.value = profileProfession.textContent;
     popup.classList.add("popup_opened");
-  }
 };
 
 let savePopup = (e) => {
-  if (isOpened()) {
     e.preventDefault();
     profileName.textContent = formName.value;
     profileProfession.textContent = formProfession.value;
-    popup.classList.remove("popup_opened");
-  }
+    closePopup();
 };
 
 let closePopup = (e) => {
-  if (isOpened()) {
-    e.preventDefault();
     popup.classList.remove("popup_opened");
-  }
 };
-
-let isOpened = () => popup.classList.contains("popup_opened");
 
 editButton.addEventListener("click", openPopup);
 closePopupButton.addEventListener("click", closePopup);
