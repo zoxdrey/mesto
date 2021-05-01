@@ -1,4 +1,6 @@
 const popup = document.querySelector(".popup");
+const popupPlace = document.querySelector(".popup-place");
+const addButton = document.querySelector(".profile__add-button");
 const editButton = document.querySelector(".profile-info__edit-button");
 const closePopupButton = document.querySelector(".popup__close-icon");
 const formName = document.querySelector(".popup__form-input_data_user-name");
@@ -81,9 +83,12 @@ const closePopup = (e) => {
 };
 
 const isOpened = () => popup.classList.contains("popup_opened");
+const togglePopupPlace = () =>
+  popupPlace.classList.toggle("popup-place_opened");
 
 editButton.addEventListener("click", openPopup);
 closePopupButton.addEventListener("click", closePopup);
 popupForm.addEventListener("submit", savePopup);
+addButton.addEventListener("click", togglePopupPlace);
 
 renderInitialCards();
