@@ -64,7 +64,9 @@ const createCard = (cardData) => {
   newCard.querySelector(".photo-card__image").src = cardData.link;
   newCard.querySelector(".photo-card__image").alt = cardData.name;
   newCard.querySelector(".photo-card__title").textContent = cardData.name;
-
+  newCard
+    .querySelector(".photo-card__like")
+    .addEventListener("click", toggleLikeState);
   return newCard;
 };
 
@@ -109,6 +111,12 @@ const togglePopupPlace = () => {
   popupPlaceCardLink.value = "";
 };
 
+const toggleLikeState = (e) => {
+  e.target.classList.toggle("photo-card__like_state_active");
+};
+
+renderInitialCards();
+
 editButton.addEventListener("click", openPopup);
 closePopupButton.addEventListener("click", closePopup);
 popupForm.addEventListener("submit", savePopup);
@@ -116,5 +124,3 @@ popupForm.addEventListener("submit", savePopup);
 popupPalceForm.addEventListener("submit", addCard);
 addButton.addEventListener("click", togglePopupPlace);
 closePopupPlaceButton.addEventListener("click", togglePopupPlace);
-
-renderInitialCards();
