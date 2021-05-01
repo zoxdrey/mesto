@@ -39,3 +39,12 @@
 @import "../blocks/popup/__form-submit-button/popup__form-submit-button.css";
 @import "../blocks/popup/__form-title/popup__form-title.css";
 @import "../blocks/popup/__form/popup__form.css";
+
+@import "../blocks/popup-place/popup-place.css";
+@import "../blocks/popup-place/_opened/popup-place_opened.css";
+@import "../blocks/popup-place/__close-icon/popup-place__close-icon.css";
+@import "../blocks/popup-place/__container/popup-place__container.css";
+@import "../blocks/popup-place/__form-input/popup-place__form-input.css";
+@import "../blocks/popup-place/__form-submit-button/popup-place__form-submit-button.css";
+@import "../blocks/popup-place/__form-title/popup-place__form-title.css";
+@import "../blocks/popup-place/__form/popup-place__form.css";
