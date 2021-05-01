@@ -70,15 +70,15 @@ const savePopup = (e) => {
     profileName.textContent = formName.value;
     profileProfession.textContent = formProfession.value;
     closePopup();
+  }
 };
-
 
 const closePopup = (e) => {
   if (isOpened()) {
     e.preventDefault();
     popup.classList.remove("popup_opened");
+  }
 };
-
 
 const isOpened = () => popup.classList.contains("popup_opened");
 
