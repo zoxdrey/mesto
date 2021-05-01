@@ -61,6 +61,7 @@ const openPopup = () => {
     formName.value = profileName.textContent;
     formProfession.value = profileProfession.textContent;
     popup.classList.add("popup_opened");
+  }
 };
 
 const savePopup = (e) => {
