@@ -47,79 +47,7 @@
           </section>
 
           <section class="photo-grid">
-            <ul class="photo-cards-list">
-              <li class="photo-card">
-                <img
-                  class="photo-card__image"
-                  src="./images/Moscow.jpg"
-                  alt="Москва"
-                />
-                <div class="photo-card__header">
-                  <h2 class="photo-card__title">Москва</h2>
-                  <button class="photo-card__like" type="button"></button>
-                </div>
-              </li>
-
-              <li class="photo-card">
-                <img
-                  class="photo-card__image"
-                  src="./images/n_novgorod.jpg"
-                  alt="Нижний Новгород"
-                />
-                <div class="photo-card__header">
-                  <h2 class="photo-card__title">Нижний Новгород</h2>
-                  <button class="photo-card__like" type="button"></button>
-                </div>
-              </li>
-
-              <li class="photo-card">
-                <img
-                  class="photo-card__image"
-                  src="./images/novosibirsk.jpg"
-                  alt="Новосибирск"
-                />
-                <div class="photo-card__header">
-                  <h2 class="photo-card__title">Новосибирск</h2>
-                  <button class="photo-card__like" type="button"></button>
-                </div>
-              </li>
-
-              <li class="photo-card">
-                <img
-                  class="photo-card__image"
-                  src="./images/Kazan_Kremlin.jpg"
-                  alt="Казань"
-                />
-                <div class="photo-card__header">
-                  <h2 class="photo-card__title">Казань</h2>
-                  <button class="photo-card__like" type="button"></button>
-                </div>
-              </li>
-
-              <li class="photo-card">
-                <img
-                  class="photo-card__image"
-                  src="./images/st_petersburg.jpg"
-                  alt="Санкт-Петербург"
-                />
-                <div class="photo-card__header">
-                  <h2 class="photo-card__title">Санкт-Петербург</h2>
-                  <button class="photo-card__like" type="button"></button>
-                </div>
-              </li>
-
-              <li class="photo-card">
-                <img
-                  class="photo-card__image"
-                  src="./images/ekaterinburg.jpg"
-                  alt="Екатеринбург"
-                />
-                <div class="photo-card__header">
-                  <h2 class="photo-card__title">Екатеринбург</h2>
-                  <button class="photo-card__like" type="button"></button>
-                </div>
-              </li>
-            </ul>
+            <ul class="photo-cards-list"></ul>
           </section>
         </main>
         <footer class="footer">
@@ -127,6 +55,20 @@
         </footer>
       </div>
     </div>
+
+    <template id="card-template">
+      <li class="photo-card">
+        <img
+          class="photo-card__image"
+          src="./images/ekaterinburg.jpg"
+          alt="Екатеринбург"
+        />
+        <div class="photo-card__header">
+          <h2 class="photo-card__title">Екатеринбург</h2>
+          <button class="photo-card__like" type="button"></button>
+        </div>
+      </li>
+    </template>
 
     <div class="popup">
       <div class="popup__container">
