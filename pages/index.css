@@ -27,6 +27,7 @@
 @import "../blocks/photo-card/__like/photo-card__like.css";
 @import "../blocks/photo-card/__like/_state/photo-card__like_state_active.css";
 @import "../blocks/photo-card/__image/photo-card__image.css";
+@import "../blocks/photo-card/__trash/photo-card__trash.css";
 
 @import "../blocks/footer/__copyright/footer__copyright.css";
 @import "../blocks/footer/footer.css";

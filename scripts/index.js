@@ -67,6 +67,10 @@ const createCard = (cardData) => {
   newCard
     .querySelector(".photo-card__like")
     .addEventListener("click", toggleLikeState);
+
+  newCard
+    .querySelector(".photo-card__trash")
+    .addEventListener("click", deleteCard);
   return newCard;
 };
 
@@ -113,6 +117,10 @@ const togglePopupPlace = () => {
 
 const toggleLikeState = (e) => {
   e.target.classList.toggle("photo-card__like_state_active");
+};
+
+const deleteCard = (e) => {
+  e.target.closest(".photo-card").remove();
 };
 
 renderInitialCards();
