@@ -3,6 +3,9 @@ const popupPlace = document.querySelector(".popup-place");
 const addButton = document.querySelector(".profile__add-button");
 const editButton = document.querySelector(".profile-info__edit-button");
 const closePopupButton = document.querySelector(".popup__close-icon");
+const closePopupPlaceButton = document.querySelector(
+  ".popup-place__close-icon"
+);
 const formName = document.querySelector(".popup__form-input_data_user-name");
 const profileName = document.querySelector(".profile-info__title");
 const formProfession = document.querySelector(
@@ -10,8 +13,15 @@ const formProfession = document.querySelector(
 );
 const profileProfession = document.querySelector(".profile-info__subtitle");
 const popupForm = document.querySelector(".popup__form");
+const popupPalceForm = document.querySelector(".popup-place__form");
 const cardTemplate = document.querySelector("#card-template");
 const cardsContainer = document.querySelector(".photo-cards-list");
+const popupPlaceCardName = document.querySelector(
+  ".popup__form-input_data_place-name"
+);
+const popupPlaceCardLink = document.querySelector(
+  ".popup__form-input_data_place-link"
+);
 
 const initialCards = [
   {
@@ -58,6 +68,15 @@ const createCard = (cardData) => {
   return newCard;
 };
 
+const addCard = (e) => {
+  e.preventDefault();
+  let newCardData = {};
+  newCardData.name = popupPlaceCardName.value;
+  newCardData.link = popupPlaceCardLink.value;
+  newCardData = cardsContainer.prepend(createCard(newCardData));
+  togglePopupPlace();
+};
+
 const openPopup = () => {
   if (!isOpened()) {
     formName.value = profileName.textContent;
@@ -83,12 +102,19 @@ const closePopup = (e) => {
 };
 
 const isOpened = () => popup.classList.contains("popup_opened");
-const togglePopupPlace = () =>
+
+const togglePopupPlace = () => {
   popupPlace.classList.toggle("popup-place_opened");
+  popupPlaceCardName.value = "";
+  popupPlaceCardLink.value = "";
+};
 
 editButton.addEventListener("click", openPopup);
 closePopupButton.addEventListener("click", closePopup);
 popupForm.addEventListener("submit", savePopup);
+
+popupPalceForm.addEventListener("submit", addCard);
 addButton.addEventListener("click", togglePopupPlace);
+closePopupPlaceButton.addEventListener("click", togglePopupPlace);
 
 renderInitialCards();
