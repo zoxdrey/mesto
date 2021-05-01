@@ -61,7 +61,6 @@ const openPopup = () => {
     formName.value = profileName.textContent;
     formProfession.value = profileProfession.textContent;
     popup.classList.add("popup_opened");
-  }
 };
 
 const savePopup = (e) => {
@@ -69,16 +68,16 @@ const savePopup = (e) => {
     e.preventDefault();
     profileName.textContent = formName.value;
     profileProfession.textContent = formProfession.value;
-    popup.classList.remove("popup_opened");
-  }
+    closePopup();
 };
+
 
 const closePopup = (e) => {
   if (isOpened()) {
     e.preventDefault();
     popup.classList.remove("popup_opened");
-  }
 };
+
 
 const isOpened = () => popup.classList.contains("popup_opened");
 
