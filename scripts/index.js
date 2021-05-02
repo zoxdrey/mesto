@@ -17,10 +17,10 @@ const popupPalceForm = document.querySelector(".popup-place__form");
 const cardTemplate = document.querySelector("#card-template");
 const cardsContainer = document.querySelector(".photo-cards-list");
 const popupPlaceCardName = document.querySelector(
-  ".popup__form-input_data_place-name"
+  ".popup-place__form-input_data_place-name"
 );
 const popupPlaceCardLink = document.querySelector(
-  ".popup__form-input_data_place-link"
+  ".popup-place__form-input_data_place-link"
 );
 const closeImageButton = document.querySelector(".image-overlay__close-icon");
 const overlayFullImage = document.querySelector(".image-overlay");
