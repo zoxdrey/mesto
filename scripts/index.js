@@ -22,6 +22,10 @@ const popupPlaceCardName = document.querySelector(
 const popupPlaceCardLink = document.querySelector(
   ".popup__form-input_data_place-link"
 );
+const closeImageButton = document.querySelector(".image-overlay__close-icon");
+const overlayFullImage = document.querySelector(".image-overlay");
+const imageFull = document.querySelector(".image-overlay__image");
+const titleImageFull = document.querySelector(".image-overlay__title");
 
 const initialCards = [
   {
@@ -63,6 +67,9 @@ const createCard = (cardData) => {
 
   newCard.querySelector(".photo-card__image").src = cardData.link;
   newCard.querySelector(".photo-card__image").alt = cardData.name;
+  newCard
+    .querySelector(".photo-card__image")
+    .addEventListener("click", openImage);
   newCard.querySelector(".photo-card__title").textContent = cardData.name;
   newCard
     .querySelector(".photo-card__like")
@@ -114,6 +121,18 @@ const deleteCard = (e) => {
   e.target.closest(".photo-card").remove();
 };
 
+const closeImage = (e) => {
+  e.target.closest(".image-overlay").classList.remove("image-overlay_opened");
+};
+
+const openImage = (e) => {
+  console.log(overlayFullImage);
+  imageFull.src = e.target.src;
+  imageFull.alt = e.target.alt;
+  titleImageFull.textContent = e.target.alt;
+  overlayFullImage.classList.add("image-overlay_opened");
+};
+
 renderInitialCards();
 
 editButton.addEventListener("click", openPopup);
@@ -123,3 +142,4 @@ popupForm.addEventListener("submit", savePopup);
 popupPalceForm.addEventListener("submit", addCard);
 addButton.addEventListener("click", togglePopupPlace);
 closePopupPlaceButton.addEventListener("click", togglePopupPlace);
+closeImageButton.addEventListener("click", closeImage);
