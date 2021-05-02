@@ -126,7 +126,6 @@ const closeImage = (e) => {
 };
 
 const openImage = (e) => {
-  console.log(overlayFullImage);
   imageFull.src = e.target.src;
   imageFull.alt = e.target.alt;
   titleImageFull.textContent = e.target.alt;
