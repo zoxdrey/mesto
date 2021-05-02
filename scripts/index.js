@@ -83,31 +83,22 @@ const addCard = (e) => {
   togglePopupPlace();
 };
 
-const openPopup = () => {
-  if (!isOpened()) {
-    formName.value = profileName.textContent;
-    formProfession.value = profileProfession.textContent;
-    popup.classList.add("popup_opened");
-  }
+let openPopup = () => {
+  formName.value = profileName.textContent;
+  formProfession.value = profileProfession.textContent;
+  popup.classList.add("popup_opened");
 };
 
-const savePopup = (e) => {
-  if (isOpened()) {
-    e.preventDefault();
-    profileName.textContent = formName.value;
-    profileProfession.textContent = formProfession.value;
-    closePopup();
-  }
+let savePopup = (e) => {
+  e.preventDefault();
+  profileName.textContent = formName.value;
+  profileProfession.textContent = formProfession.value;
+  closePopup();
 };
 
-const closePopup = (e) => {
-  if (isOpened()) {
-    e.preventDefault();
-    popup.classList.remove("popup_opened");
-  }
+let closePopup = (e) => {
+  popup.classList.remove("popup_opened");
 };
-
-const isOpened = () => popup.classList.contains("popup_opened");
 
 const togglePopupPlace = () => {
   popupPlace.classList.toggle("popup-place_opened");
