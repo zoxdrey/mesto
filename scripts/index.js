@@ -74,7 +74,6 @@ const createCard = (cardData) => {
   newCard
     .querySelector(".photo-card__like")
     .addEventListener("click", toggleLikeState);
-
   newCard
     .querySelector(".photo-card__trash")
     .addEventListener("click", deleteCard);
@@ -90,20 +89,20 @@ const addCard = (e) => {
   togglePopupPlace();
 };
 
-let openPopup = () => {
+const openPopup = () => {
   formName.value = profileName.textContent;
   formProfession.value = profileProfession.textContent;
   popup.classList.add("popup_opened");
 };
 
-let savePopup = (e) => {
+const savePopup = (e) => {
   e.preventDefault();
   profileName.textContent = formName.value;
   profileProfession.textContent = formProfession.value;
   closePopup();
 };
 
-let closePopup = (e) => {
+const closePopup = (e) => {
   popup.classList.remove("popup_opened");
 };
 
