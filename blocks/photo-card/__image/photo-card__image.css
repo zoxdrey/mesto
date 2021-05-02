@@ -5,4 +5,5 @@
   object-fit: cover;
   margin-bottom: 0;
   display: block;
+  cursor: pointer;
 }

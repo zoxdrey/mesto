@@ -50,3 +50,11 @@
 @import "../blocks/popup-place/__form-submit-button/popup-place__form-submit-button.css";
 @import "../blocks/popup-place/__form-title/popup-place__form-title.css";
 @import "../blocks/popup-place/__form/popup-place__form.css";
+
+@import "../blocks/image-overlay/image-overlay.css";
+@import "../blocks/image-overlay/__container/image-overlay__container.css";
+@import "../blocks/image-overlay/__image/image-overlay__image.css";
+@import "../blocks/image-overlay/__close-icon/image-overlay__close-icon.css";
+@import "../blocks/image-overlay/__title/image-overlay__title.css";
+@import "../blocks/image-overlay/__image-wrapper/image-overlay__image-wrapper.css";
+@import "../blocks/image-overlay/_opened/image-overlay_opened.css";
