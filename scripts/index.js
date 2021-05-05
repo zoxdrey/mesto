@@ -85,7 +85,7 @@ const addCard = (e) => {
   newCardData.name = popupPlaceCardName.value;
   newCardData.link = popupPlaceCardLink.value;
   cardsContainer.prepend(createCard(newCardData));
-  openPlacePopup();
+  closePlacePopup();
 };
 
 const openProfilePopup = () => {
