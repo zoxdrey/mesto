@@ -69,7 +69,7 @@
       </li>
     </template>
 
-    <div class="popup">
+    <div class="popup profile_popup">
       <div class="popup__container">
         <button
           class="popup__close-icon"
@@ -99,27 +99,31 @@
       </div>
     </div>
 
-    <div class="popup-place">
-      <div class="popup-place__container">
+    <div class="popup popup-place">
+      <div class="popup__container">
         <button
-          class="popup-place__close-icon"
+          class="popup__close-icon popup-place__close-icon"
           type="button"
           aria-label="Close"
         ></button>
-        <form class="popup-place__form" name="popup-place-form">
-          <h2 class="popup-place__form-title">Новое место</h2>
+        <form class="popup__form popup-place__form" name="popup-place-form">
+          <h2 class="popup__form-title">Новое место</h2>
           <input
-            class="popup-place__form-input popup-place__form-input_data_place-name"
+            class="popup__form-input popup__form-input_data_place-name"
             name="place-name"
             value=""
+            required
+            placeholder="Название"
           />
           <input
-            class="popup-place__form-input popup-place__form-input_data_place-link"
+            class="popup__form-input popup__form-input_data_place-link"
             name="place-link"
             value=""
+            required
+            placeholder="Ссылка на картинку"
           />
           <button
-            class="popup-place__form-submit-button"
+            class="popup__form-submit-button popup-place__form-submit-button"
             type="submit"
             aria-label="Save"
           >
@@ -129,10 +133,10 @@
       </div>
     </div>
 
-    <div class="image-overlay">
+    <div class="popup image-overlay">
       <div class="image-overlay__container">
         <button
-          class="image-overlay__close-icon"
+          class="popup__close-icon image-overlay__close-icon"
           type="button"
           aria-label="Close"
         ></button>
