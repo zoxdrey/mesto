@@ -33,7 +33,6 @@
 @import "../blocks/footer/footer.css";
 
 @import "../blocks/popup/popup.css";
-@import "../blocks/popup/_opened/popup_opened.css";
 
 @import "../blocks/popup/__close-icon/popup__close-icon.css";
 @import "../blocks/popup/__container/popup__container.css";
@@ -49,3 +48,4 @@
 @import "../blocks/image-overlay/__title/image-overlay__title.css";
 @import "../blocks/image-overlay/__image-wrapper/image-overlay__image-wrapper.css";
 @import "../blocks/image-overlay/_opened/image-overlay_opened.css";
+@import "../blocks/popup/_opened/popup_opened.css";
