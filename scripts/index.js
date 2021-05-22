@@ -101,7 +101,7 @@ const closeProfilePopup = () => {
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
   popup.addEventListener("click", closePopupOverlay);
-  popup.addEventListener("keydown", closePopupOverlay); // почему то keydown не выстреливает, если навешивать его на popup
+  document.addEventListener("keydown", closePopupByEsc); // почему то keydown не выстреливает, если навешивать его на popup
 };
 
 const closePopupOverlay = (e) => {
@@ -109,18 +109,20 @@ const closePopupOverlay = (e) => {
 };
 
 const closePopupByEsc = (e) => {
-  console.log(e.target);
+  console.log(e);
   if (e.key == "Escape") {
-    e.target.classList.remove("popup_opened");
+    const popup = document.querySelector(".popup_opened");
+    popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", closePopupByEsc);
   }
 };
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
   popup.removeEventListener("click", (e) => {
-    console.log(e);
     closePopupOverlay;
   });
+  document.removeEventListener("keydown", closePopupByEsc);
 };
 
 const savePopup = (e) => {

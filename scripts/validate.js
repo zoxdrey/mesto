@@ -7,33 +7,50 @@ const enableValidation = ({ formSelector, ...rest }) => {
   });
 };
 
-const setEventListeners = (form, { inputSelector, ...rest }) => {
+const hasInvalidInput = (inputs) => {
+  return inputs.some((input) => !input.validity.valid);
+};
+
+const toggleButtonState = (btn, inputs, disableBtnClass) => {
+  if (hasInvalidInput(inputs)) {
+    btn.classList.add(disableBtnClass);
+  } else {
+    btn.classList.remove(disableBtnClass);
+  }
+};
+
+const setEventListeners = (
+  form,
+  { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }
+) => {
   const inputs = form.querySelectorAll(inputSelector);
   const inputArr = Array.from(inputs);
+  const btn = form.querySelector(submitButtonSelector);
 
   inputArr.forEach((input) => {
     input.addEventListener("input", () => {
       isInputValid(input, form, rest);
+
+      toggleButtonState(btn, inputArr, inactiveButtonClass);
     });
   });
 };
-// Функция, которая добавляет класс с ошибкой
+
 const showInputError = (element, form, inputErrorClass, rest) => {
   const errorElement = form.querySelector(`.${element.id}-error`);
-  errorElement.innerHTML = element.validationMessage;
+  console.log(errorElement);
+  errorElement.textContent = element.validationMessage;
   element.classList.add(inputErrorClass);
   errorElement.classList.add(rest.errorClass);
 };
 
-// Функция, которая удаляет класс с ошибкой
 const hideInputError = (element, form, inputErrorClass, rest) => {
   const errorElement = form.querySelector(`.${element.id}-error`);
   element.classList.remove(inputErrorClass);
   errorElement.classList.remove(rest.errorClass);
-  errorElement.innerHTML = "";
+  errorElement.textContent = "";
 };
 
-// Функция, которая проверяет валидность поля
 const isInputValid = (formInput, form, { inputErrorClass, ...rest }) => {
   if (!formInput.validity.valid) {
     showInputError(formInput, form, inputErrorClass, rest);
