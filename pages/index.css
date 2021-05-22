@@ -40,6 +40,10 @@
 @import "../blocks/popup/__form-submit-button/popup__form-submit-button.css";
 @import "../blocks/popup/__form-title/popup__form-title.css";
 @import "../blocks/popup/__form/popup__form.css";
+@import "../blocks/popup/__form-input/_error/popup__form-input_error_active.css";
+@import "../blocks/popup/__form-error/popup__form-error.css";
+@import "../blocks/popup/__form-error/_active/popup__form-error_active.css";
+@import "../blocks/popup/__form-submit-button/_state/popup__form-submit-button_state_disabled.css";
 
 @import "../blocks/image-overlay/image-overlay.css";
 @import "../blocks/image-overlay/__container/image-overlay__container.css";

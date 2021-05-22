@@ -2,6 +2,7 @@
   max-width: 75vw;
   margin: 0;
   padding: 0;
+  cursor: auto;
 }
 
 @media (min-width: 1440px) {
