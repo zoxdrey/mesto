@@ -4,5 +4,8 @@
   box-sizing: border-box;
   border-radius: 2px;
   background-color: #e5e5e5;
+}
+
+.popup__form-submit-button_state_disabled:disabled {
   cursor: not-allowed;
 }
