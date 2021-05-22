@@ -167,15 +167,6 @@ renderInitialCards();
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
 
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__form-input",
-  submitButtonSelector: ".popup__form-submit-button",
-  inactiveButtonClass: "popup__form-submit-button_state_disabled",
-  inputErrorClass: "popup__form-input_error_active",
-  errorClass: "popup__form-error_active",
-});
-
 editButton.addEventListener("click", openProfilePopup);
 closePopupButton.addEventListener("click", closeProfilePopup);
 profilePopupForm.addEventListener("submit", savePopup);
@@ -184,3 +175,12 @@ popupPlaceForm.addEventListener("submit", addCard);
 addButton.addEventListener("click", openPlacePopup);
 closePopupPlaceButton.addEventListener("click", closePlacePopup);
 closeImageButton.addEventListener("click", closeImage);
+
+enableValidation({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-input",
+  submitButtonSelector: ".popup__form-submit-button",
+  inactiveButtonClass: "popup__form-submit-button_state_disabled",
+  inputErrorClass: "popup__form-input_error_active",
+  errorClass: "popup__form-error_active",
+});
