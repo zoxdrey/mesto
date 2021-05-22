@@ -13,7 +13,7 @@ const formProfession = document.querySelector(
 );
 const profileProfession = document.querySelector(".profile-info__subtitle");
 const profilePopupForm = profilePopup.querySelector(".popup__form");
-const popupPalceForm = document.querySelector(".popup-place__form");
+const popupPlaceForm = document.querySelector(".popup-place__form");
 const cardTemplate = document.querySelector("#card-template");
 const cardsContainer = document.querySelector(".photo-cards-list");
 const popupPlaceCardName = document.querySelector(
@@ -100,10 +100,27 @@ const closeProfilePopup = () => {
 
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
+  popup.addEventListener("click", closePopupOverlay);
+  popup.addEventListener("keydown", closePopupOverlay); // почему то keydown не выстреливает, если навешивать его на popup
+};
+
+const closePopupOverlay = (e) => {
+  e.target.classList.remove("popup_opened");
+};
+
+const closePopupByEsc = (e) => {
+  console.log(e.target);
+  if (e.key == "Escape") {
+    e.target.classList.remove("popup_opened");
+  }
 };
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener("click", (e) => {
+    console.log(e);
+    closePopupOverlay;
+  });
 };
 
 const savePopup = (e) => {
@@ -146,11 +163,23 @@ const openImage = (e) => {
 
 renderInitialCards();
 
+// включение валидации вызовом enableValidation
+// все настройки передаются при вызове
+
+enableValidation({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-input",
+  submitButtonSelector: ".popup__form-submit-button",
+  inactiveButtonClass: "popup__form-submit-button_state_disabled",
+  inputErrorClass: "popup__form-input_error_active",
+  errorClass: "popup__form-error_active",
+});
+
 editButton.addEventListener("click", openProfilePopup);
 closePopupButton.addEventListener("click", closeProfilePopup);
 profilePopupForm.addEventListener("submit", savePopup);
 
-popupPalceForm.addEventListener("submit", addCard);
+popupPlaceForm.addEventListener("submit", addCard);
 addButton.addEventListener("click", openPlacePopup);
 closePopupPlaceButton.addEventListener("click", closePlacePopup);
 closeImageButton.addEventListener("click", closeImage);
