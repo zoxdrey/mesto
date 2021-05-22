@@ -109,7 +109,6 @@ const closePopupOverlay = (e) => {
 };
 
 const closePopupByEsc = (e) => {
-  console.log(e);
   if (e.key == "Escape") {
     const popup = document.querySelector(".popup_opened");
     popup.classList.remove("popup_opened");
