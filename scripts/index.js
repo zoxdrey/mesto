@@ -1,8 +1,8 @@
-const profilePopup = document.querySelector(".profile-popup");
+const popupProfile = document.querySelector(".profile-popup");
 const popupPlace = document.querySelector(".popup-place");
 const addButton = document.querySelector(".profile__add-button");
 const editButton = document.querySelector(".profile-info__edit-button");
-const closePopupButton = profilePopup.querySelector(".popup__close-icon");
+const closePopupButton = popupProfile.querySelector(".popup__close-icon");
 const closePopupPlaceButton = document.querySelector(
   ".popup-place__close-icon"
 );
@@ -12,7 +12,7 @@ const formProfession = document.querySelector(
   ".popup__form-input_data_user-profession"
 );
 const profileProfession = document.querySelector(".profile-info__subtitle");
-const profilePopupForm = profilePopup.querySelector(".popup__form");
+const profilePopupForm = popupProfile.querySelector(".popup__form");
 const popupPlaceForm = document.querySelector(".popup-place__form");
 const cardTemplate = document.querySelector("#card-template");
 const cardsContainer = document.querySelector(".photo-cards-list");
@@ -26,33 +26,7 @@ const closeImageButton = document.querySelector(".image-overlay__close-icon");
 const overlayFullImage = document.querySelector(".image-overlay");
 const imageFull = document.querySelector(".image-overlay__image");
 const titleImageFull = document.querySelector(".image-overlay__title");
-
-const initialCards = [
-  {
-    name: "Москва",
-    link: "./images/Moscow.jpg",
-  },
-  {
-    name: "Нижний Новгород",
-    link: "./images/n_novgorod.jpg",
-  },
-  {
-    name: "Новосибирск",
-    link: "./images/novosibirsk.jpg",
-  },
-  {
-    name: "Казань",
-    link: "./images/Kazan_Kremlin.jpg",
-  },
-  {
-    name: "Санкт-Петербург",
-    link: "./images/st_petersburg.jpg",
-  },
-  {
-    name: "Екатеринбург",
-    link: "./images/ekaterinburg.jpg",
-  },
-];
+const popupOverlays = document.querySelectorAll(".popup");
 
 const renderInitialCards = () => {
   initialCards.forEach((item) => {
@@ -79,7 +53,7 @@ const createCard = (cardData) => {
   return newCard;
 };
 
-const addCard = (e) => {
+const handleAddCard = (e) => {
   e.preventDefault();
   const newCardData = {};
   newCardData.name = popupPlaceCardName.value;
@@ -88,19 +62,23 @@ const addCard = (e) => {
   closePlacePopup();
 };
 
+const handleOverlayClick = (e) => {
+  console.log(e.target);
+  closePopup(e.target);
+};
+
 const openProfilePopup = () => {
   formName.value = profileName.textContent;
   formProfession.value = profileProfession.textContent;
-  openPopup(profilePopup);
+  openPopup(popupProfile);
 };
 
 const closeProfilePopup = () => {
-  closePopup(profilePopup);
+  closePopup(popupProfile);
 };
 
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
-  popup.addEventListener("click", closePopupOverlay);
   document.addEventListener("keydown", closePopupByEsc); // почему то keydown не выстреливает, если навешивать его на popup
 };
 
@@ -118,9 +96,6 @@ const closePopupByEsc = (e) => {
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
-  popup.removeEventListener("click", (e) => {
-    closePopupOverlay;
-  });
   document.removeEventListener("keydown", closePopupByEsc);
 };
 
@@ -128,10 +103,11 @@ const savePopup = (e) => {
   e.preventDefault();
   profileName.textContent = formName.value;
   profileProfession.textContent = formProfession.value;
-  closePopup(profilePopup);
+  closePopup(popupProfile);
 };
 
 const openPlacePopup = () => {
+  resetValidation(popupPlaceForm);
   openPopup(popupPlace);
   popupPlaceCardName.value = "";
   popupPlaceCardLink.value = "";
@@ -167,11 +143,14 @@ renderInitialCards();
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
 
+popupOverlays.forEach((popupOverlay) =>
+  popupOverlay.addEventListener("click", handleOverlayClick)
+);
 editButton.addEventListener("click", openProfilePopup);
 closePopupButton.addEventListener("click", closeProfilePopup);
 profilePopupForm.addEventListener("submit", savePopup);
 
-popupPlaceForm.addEventListener("submit", addCard);
+popupPlaceForm.addEventListener("submit", handleAddCard);
 addButton.addEventListener("click", openPlacePopup);
 closePopupPlaceButton.addEventListener("click", closePlacePopup);
 closeImageButton.addEventListener("click", closeImage);

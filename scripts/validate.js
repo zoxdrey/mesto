@@ -62,3 +62,19 @@ const isInputValid = (formInput, form, { inputErrorClass, ...rest }) => {
     hideInputError(formInput, form, inputErrorClass, rest);
   }
 };
+
+const resetValidation = (form) => {
+  const formInputs = form.querySelectorAll(".popup__form-input");
+  const formSpans = form.querySelectorAll(".popup__form-error");
+  const formPlaceBtnSubmit = form.querySelector(
+    ".popup-place__form-submit-button"
+  );
+  formInputs.forEach((input) => {
+    input.classList.remove(".popup__form-input_error_active");
+  });
+  formSpans.forEach((input) => {
+    input.classList.remove(".popup__form-error_active");
+  });
+  formPlaceBtnSubmit.classList.add("popup__form-submit-button_state_disabled");
+  formPlaceBtnSubmit.disabled = true;
+};
