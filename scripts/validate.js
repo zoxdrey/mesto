@@ -42,7 +42,6 @@ const setEventListeners = (
 
 const showInputError = (element, form, inputErrorClass, rest) => {
   const errorElement = form.querySelector(`.${element.id}-error`);
-  console.log(errorElement);
   errorElement.textContent = element.validationMessage;
   element.classList.add(inputErrorClass);
   errorElement.classList.add(rest.errorClass);
