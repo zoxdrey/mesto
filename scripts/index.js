@@ -66,7 +66,6 @@ const handleAddCard = (e) => {
 };
 
 const handleOverlayClick = (e) => {
-  console.log(e.target);
   closePopup(e.target);
 };
 
