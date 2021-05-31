@@ -19,7 +19,7 @@ const inputProfession = document.querySelector(
   ".popup__form-input_data_user-profession"
 );
 const profileProfession = document.querySelector(".profile-info__subtitle");
-const formProfile = popupProfile.querySelector(".popup__form");
+const formProfile = document.querySelector(".popup__form");
 const formPlace = document.querySelector(".popup-place__form");
 const cardsContainer = document.querySelector(".photo-cards-list");
 const inputNameFormPlace = document.querySelector(
@@ -54,7 +54,8 @@ const handleAddCard = (e) => {
   const newCardData = {};
   newCardData.name = inputNameFormPlace.value;
   newCardData.link = inputLinkFormPlace.value;
-  cardsContainer.prepend(createCard(newCardData));
+  const newCard = new Card(newCardData, "#card-template", openImage);
+  cardsContainer.prepend(newCard.createCard());
   closePlacePopup();
 };
 
@@ -63,6 +64,8 @@ const handleOverlayClick = (e) => {
 };
 
 const openProfilePopup = () => {
+  console.log(popupProfile);
+  resetValidation(popupProfile);
   inputUserName.value = profileFormTitle.textContent;
   inputProfession.value = profileProfession.textContent;
   openPopup(popupProfile);
@@ -127,20 +130,16 @@ const openImage = (e) => {
 
 renderInitialCards();
 
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
-
 const resetValidation = (form) => {
   const formInputs = form.querySelectorAll(".popup__form-input");
   const formSpans = form.querySelectorAll(".popup__form-error");
-  const formPlaceBtnSubmit = form.querySelector(
-    ".popup-place__form-submit-button"
-  );
+  const formPlaceBtnSubmit = form.querySelector(".popup__form-submit-button");
   formInputs.forEach((input) => {
-    input.classList.remove(".popup__form-input_error_active");
+    console.log(input);
+    input.classList.remove("popup__form-input_error_active");
   });
   formSpans.forEach((input) => {
-    input.classList.remove(".popup__form-error_active");
+    input.classList.remove("popup__form-error_active");
   });
   formPlaceBtnSubmit.classList.add("popup__form-submit-button_state_disabled");
   formPlaceBtnSubmit.disabled = true;
