@@ -135,7 +135,6 @@ const resetValidation = (form) => {
   const formSpans = form.querySelectorAll(".popup__form-error");
   const formPlaceBtnSubmit = form.querySelector(".popup__form-submit-button");
   formInputs.forEach((input) => {
-    console.log(input);
     input.classList.remove("popup__form-input_error_active");
   });
   formSpans.forEach((input) => {
