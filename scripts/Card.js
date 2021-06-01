@@ -7,7 +7,7 @@ class Card {
   }
 
   createCard = () => {
-    const cardTemplate = document.querySelector("#card-template");
+    const cardTemplate = document.querySelector(this._cardSelector);
     const newCard = cardTemplate.content
       .querySelector(".photo-card")
       .cloneNode(true);

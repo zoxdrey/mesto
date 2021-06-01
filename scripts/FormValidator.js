@@ -59,6 +59,24 @@ class FormValidator {
       this._hideInputError(formInput);
     }
   };
+
+  resetValidation = () => {
+    const formInputs = this._formElem.querySelectorAll(
+      this._config.inputSelector
+    );
+    const formSpans = this._formElem.querySelectorAll(".popup__form-error");
+    const formPlaceBtnSubmit = this._formElem.querySelector(
+      this._config.submitButtonSelector
+    );
+    formInputs.forEach((input) => {
+      input.classList.remove(this._config.inputErrorClass);
+    });
+    formSpans.forEach((input) => {
+      input.classList.remove(this._config.errorClass);
+    });
+    formPlaceBtnSubmit.classList.add(this._config.inactiveButtonClass);
+    formPlaceBtnSubmit.disabled = true;
+  };
 }
 
 export default FormValidator;

@@ -41,11 +41,16 @@ const config = {
   inputErrorClass: "popup__form-input_error_active",
   errorClass: "popup__form-error_active",
 };
+const cardTemplate = "#card-template";
+
+const createNewCard = (cardData) => {
+  const newCard = new Card(cardData, cardTemplate, openImage);
+  return newCard.createCard();
+};
 
 const renderInitialCards = () => {
   initialCards.forEach((item) => {
-    const newCard = new Card(item, "#card-template", openImage);
-    cardsContainer.append(newCard.createCard());
+    cardsContainer.append(createNewCard(item));
   });
 };
 
@@ -54,8 +59,7 @@ const handleAddCard = (e) => {
   const newCardData = {};
   newCardData.name = inputNameFormPlace.value;
   newCardData.link = inputLinkFormPlace.value;
-  const newCard = new Card(newCardData, "#card-template", openImage);
-  cardsContainer.prepend(newCard.createCard());
+  cardsContainer.prepend(createNewCard(newCardData));
   closePlacePopup();
 };
 
@@ -64,8 +68,7 @@ const handleOverlayClick = (e) => {
 };
 
 const openProfilePopup = () => {
-  console.log(popupProfile);
-  resetValidation(popupProfile);
+  formProfileValidator.resetValidation();
   inputUserName.value = profileFormTitle.textContent;
   inputProfession.value = profileProfession.textContent;
   openPopup(popupProfile);
@@ -80,14 +83,10 @@ const openPopup = (popup) => {
   document.addEventListener("keydown", closePopupByEsc); // почему то keydown не выстреливает, если навешивать его на popup
 };
 
-const closePopupOverlay = (e) => {
-  e.target.classList.remove("popup_opened");
-};
-
 const closePopupByEsc = (e) => {
-  if (e.key == "Escape") {
+  if (e.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
-    popup.classList.remove("popup_opened");
+    closePopup(popup);
     document.removeEventListener("keydown", closePopupByEsc);
   }
 };
@@ -105,7 +104,7 @@ const savePopup = (e) => {
 };
 
 const openPlacePopup = () => {
-  resetValidation(formPlace);
+  formPlaceValidator.resetValidation();
   openPopup(popupPlace);
   inputNameFormPlace.value = "";
   inputLinkFormPlace.value = "";
@@ -129,20 +128,6 @@ const openImage = (e) => {
 };
 
 renderInitialCards();
-
-const resetValidation = (form) => {
-  const formInputs = form.querySelectorAll(".popup__form-input");
-  const formSpans = form.querySelectorAll(".popup__form-error");
-  const formPlaceBtnSubmit = form.querySelector(".popup__form-submit-button");
-  formInputs.forEach((input) => {
-    input.classList.remove("popup__form-input_error_active");
-  });
-  formSpans.forEach((input) => {
-    input.classList.remove("popup__form-error_active");
-  });
-  formPlaceBtnSubmit.classList.add("popup__form-submit-button_state_disabled");
-  formPlaceBtnSubmit.disabled = true;
-};
 
 const formProfileValidator = new FormValidator(config, formProfile);
 formProfileValidator.enableValidation();
