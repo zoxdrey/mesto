@@ -64,7 +64,9 @@ class FormValidator {
     const formInputs = this._formElem.querySelectorAll(
       this._config.inputSelector
     );
-    const formSpans = this._formElem.querySelectorAll(".popup__form-error");
+    const formSpans = this._formElem.querySelectorAll(
+      this._config.formErrorClass
+    );
     const formPlaceBtnSubmit = this._formElem.querySelector(
       this._config.submitButtonSelector
     );

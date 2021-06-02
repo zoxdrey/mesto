@@ -40,6 +40,7 @@ const config = {
   inactiveButtonClass: "popup__form-submit-button_state_disabled",
   inputErrorClass: "popup__form-input_error_active",
   errorClass: "popup__form-error_active",
+  formErrorClass: ".popup__form-error",
 };
 const cardTemplate = "#card-template";
 
@@ -87,7 +88,6 @@ const closePopupByEsc = (e) => {
   if (e.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
     closePopup(popup);
-    document.removeEventListener("keydown", closePopupByEsc);
   }
 };
 
