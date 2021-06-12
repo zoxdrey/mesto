@@ -1,9 +1,9 @@
 class Card {
-  constructor(cardData, cardSelector, cardOpenHandler) {
+  constructor(cardData, cardSelector, handleCardClick) {
     this._link = cardData.link;
     this._name = cardData.name;
     this._cardSelector = cardSelector;
-    this._cardOpenHandler = cardOpenHandler;
+    this._handleCardClick = handleCardClick;
   }
 
   createCard = () => {
@@ -22,7 +22,7 @@ class Card {
   _fillCardImage = (cardImage) => {
     cardImage.src = this._link;
     cardImage.alt = this._name;
-    cardImage.addEventListener("click", this._cardOpenHandler);
+    cardImage.addEventListener("click", this._handleCardClick);
   };
 
   _addEventListeners = (card) => {
