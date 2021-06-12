@@ -66,8 +66,8 @@ const createNewCard = (cardData) => {
 
 const handleAddCard = (data) => {
   const newCardData = {};
-  newCardData.name = data["place-link"];
-  newCardData.link = data["place-name"];
+  newCardData.name = data["place-name"];
+  newCardData.link = data["place-link"];
   cardList.addItem(createNewCard(newCardData));
   popupPlace.close();
 };
