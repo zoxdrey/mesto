@@ -7,7 +7,6 @@
       content="width=device-width, height=device-height, initial-scale=1.0"
     />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body>
     <div class="page">
@@ -15,7 +14,7 @@
         <header class="header">
           <img
             class="header__logo"
-            src="./images/logo.svg"
+            src="<%=require('./images/logo.svg')%>"
             alt="Пользовательский аватар"
           />
         </header>
@@ -24,7 +23,7 @@
             <div class="profile__wrapper">
               <img
                 class="profile__avatar"
-                src="./images/custo-avatar.png"
+                src="<%=require('./images/custo-avatar.png')%>"
                 alt="Кусто"
               />
               <div class="profile-info">
@@ -169,7 +168,5 @@
         </figure>
       </div>
     </div>
-    <script src="./scripts/initial-cards.js" type="module"></script>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
