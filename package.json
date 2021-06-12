@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "ya study project - mesto",
+  "main": "index.js",
+  "dependencies": {
+    "core-js": "^3.14.0",
+    "webpack": "^5.38.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "autoprefixer": "^10.2.6",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.6",
+    "cssnano": "^5.0.6",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "postcss-loader": "^6.1.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoxdrey/mesto.git"
+  },
+  "author": "Vyacheslav Petrov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zoxdrey/mesto/issues"
+  },
+  "homepage": "https://github.com/zoxdrey/mesto#readme"
+}
