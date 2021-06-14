@@ -22,7 +22,14 @@ class Popup {
   setEventListeners() {
     const closeIcon = this._popup.querySelector(".popup__close-icon");
     closeIcon.addEventListener("click", this.close);
+    this._popup.addEventListener("click", this._handleOverlayClick);
   }
+
+  _handleOverlayClick = (e) => {
+    if (e.target.classList.contains("popup")) {
+      this.close();
+    }
+  };
 }
 
 export default Popup;

@@ -50,19 +50,18 @@ popupPlace.setEventListeners();
 const cardList = new Section(
   {
     items: initialCards,
-    renderer: (cardItem) => {
-      const newCard = new Card(cardItem, cardTemplate, openImage);
-      cardsContainer.append(newCard.createCard());
+    renderer: function (cardItem) {
+      cardsContainer.append(createNewCard(cardItem));
     },
   },
   ".photo-cards-list"
 );
 cardList.render();
 
-const createNewCard = (cardData) => {
+function createNewCard(cardData) {
   const newCard = new Card(cardData, cardTemplate, openImage);
   return newCard.createCard();
-};
+}
 
 const handleAddCard = (data) => {
   const newCardData = {};
@@ -70,14 +69,6 @@ const handleAddCard = (data) => {
   newCardData.link = data["place-link"];
   cardList.addItem(createNewCard(newCardData));
   popupPlace.close();
-};
-
-const handleOverlayClick = (e) => {
-  if (e.target.classList.contains("popup")) {
-    popupWithImage.close();
-    popupProfile.close();
-    popupPlace.close();
-  }
 };
 
 const openProfilePopup = () => {
@@ -101,8 +92,8 @@ const openPlacePopup = () => {
   popupPlace.open();
 };
 
-function openImage(e) {
-  popupWithImage.open(e);
+function openImage(name, link) {
+  popupWithImage.open(name, link);
 }
 
 const formProfileValidator = new FormValidator(config, formProfile);
@@ -110,10 +101,6 @@ formProfileValidator.enableValidation();
 
 const formPlaceValidator = new FormValidator(config, formPlace);
 formPlaceValidator.enableValidation();
-
-popupOverlays.forEach((popupOverlay) =>
-  popupOverlay.addEventListener("click", handleOverlayClick)
-);
 
 buttonEdit.addEventListener("click", openProfilePopup);
 buttonAdd.addEventListener("click", openPlacePopup);

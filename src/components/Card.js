@@ -22,7 +22,6 @@ class Card {
   _fillCardImage = (cardImage) => {
     cardImage.src = this._link;
     cardImage.alt = this._name;
-    cardImage.addEventListener("click", this._handleCardClick);
   };
 
   _addEventListeners = (card) => {
@@ -32,6 +31,11 @@ class Card {
     card
       .querySelector(".photo-card__trash")
       .addEventListener("click", this._deleteCard);
+    card
+      .querySelector(".photo-card__image")
+      .addEventListener("click", () =>
+        this._handleCardClick(this._name, this._link)
+      );
   };
 
   _toggleLikeState = (e) => {

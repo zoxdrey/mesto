@@ -2,6 +2,11 @@ class FormValidator {
   constructor(config, formElem) {
     this._config = config;
     this._formElem = formElem;
+    this._inputs = Array.from(
+      this._formElem.querySelectorAll(this._config.inputSelector)
+    );
+    this._btn = this._formElem.querySelector(this._config.submitButtonSelector);
+    this._hideInputError = this._hideInputError.bind(this);
   }
 
   enableValidation = () => {
@@ -9,10 +14,11 @@ class FormValidator {
   };
 
   _hasInvalidInput = (inputs) => {
-    return inputs.some((input) => !input.validity.valid);
+    return Array.from(inputs).some((input) => !input.validity.valid);
   };
 
   _toggleButtonState = (btn, inputs) => {
+    console.log(inputs);
     if (this._hasInvalidInput(inputs)) {
       btn.classList.add(this._config.inactiveButtonClass);
       btn.disabled = true;
@@ -23,17 +29,13 @@ class FormValidator {
   };
 
   _setEventListeners = () => {
-    const inputs = this._formElem.querySelectorAll(this._config.inputSelector);
-    const inputArr = Array.from(inputs);
-    const btn = this._formElem.querySelector(this._config.submitButtonSelector);
+    this._toggleButtonState(this._btn, this._inputs);
 
-    this._toggleButtonState(btn, inputArr);
-
-    inputArr.forEach((input) => {
+    this._inputs.forEach((input) => {
       input.addEventListener("input", () => {
         this._isInputValid(input);
 
-        this._toggleButtonState(btn, inputArr);
+        this._toggleButtonState(this._btn, this._inputs);
       });
     });
   };
@@ -70,13 +72,12 @@ class FormValidator {
     const formPlaceBtnSubmit = this._formElem.querySelector(
       this._config.submitButtonSelector
     );
-    formInputs.forEach((input) => {
-      input.classList.remove(this._config.inputErrorClass);
-    });
+    formInputs.forEach((input) => this._hideInputError(input));
     formSpans.forEach((input) => {
       input.classList.remove(this._config.errorClass);
     });
-    formPlaceBtnSubmit.classList.add(this._config.inactiveButtonClass);
+    //formPlaceBtnSubmit.classList.add(this._config.inactiveButtonClass);
+    this._toggleButtonState(formPlaceBtnSubmit, formInputs);
     formPlaceBtnSubmit.disabled = true;
   };
 }
