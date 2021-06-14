@@ -18,7 +18,6 @@ class FormValidator {
   };
 
   _toggleButtonState = (btn, inputs) => {
-    console.log(inputs);
     if (this._hasInvalidInput(inputs)) {
       btn.classList.add(this._config.inactiveButtonClass);
       btn.disabled = true;
