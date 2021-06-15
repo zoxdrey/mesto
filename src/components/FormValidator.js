@@ -49,9 +49,8 @@ class FormValidator {
   _hideInputError = (element) => {
     const errorElement = this._formElem.querySelector(`.${element.id}-error`);
     element.classList.remove(this._config.inputErrorClass);
-    if(errorElement){
     errorElement.classList.remove(this._config.errorClass);
-    errorElement.textContent = "";}
+    errorElement.textContent = "";
   };
 
   _isInputValid = (formInput) => {
@@ -63,19 +62,7 @@ class FormValidator {
   };
 
   resetValidation = () => {
-    const formInputs = this._formElem.querySelectorAll(
-      this._config.inputSelector
-    );
-    const formSpans = this._formElem.querySelectorAll(
-      this._config.formErrorClass
-    );
-    const formPlaceBtnSubmit = this._formElem.querySelector(
-      this._config.submitButtonSelector
-    );
-    formInputs.forEach((input) => this._hideInputError(input));
-    formSpans.forEach((spanEl) => {
-      this._hideInputError(spanEl)
-    });
+    this._inputs.forEach((input) => this._hideInputError(input));
     this._toggleButtonState();
   };
 }
