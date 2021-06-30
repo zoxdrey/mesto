@@ -43,6 +43,71 @@ class Api {
             return Promise.reject(`Ошибка: ${res.status}`);
         });
     }
+
+    editUserAvatar() {
+        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+            headers: {
+                authorization: authToken
+            }
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
+
+    createCard() {
+        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+            headers: {
+                authorization: authToken
+            }
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
+
+    deleteCard() {
+        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+            headers: {
+                authorization: authToken
+            }
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
+
+    addLike() {
+        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+            headers: {
+                authorization: authToken
+            }
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
+
+    removeLike() {
+        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+            headers: {
+                authorization: authToken
+            }
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
 }
 
 export default Api;
