@@ -50,11 +50,16 @@ class Api {
         });
     }
 
-    setUserAvatar() {
-        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
+    setUserAvatar(avatarLink) {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me/avatar`, {
+            method: 'PATCH',
             headers: {
-                authorization: authToken
-            }
+                authorization: authToken,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                avatar: avatarLink
+            })
         }).then(res => {
             if (res.ok) {
                 return res.json();
@@ -82,8 +87,8 @@ class Api {
         });
     }
 
-    deleteCard() {
-        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
+    deleteCard(cardId) {
+        return fetch(`${baseUrl}/v1/${groupId}/cards/${cardId}`, {
             headers: {
                 authorization: authToken
             }

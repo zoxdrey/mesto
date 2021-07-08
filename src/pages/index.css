@@ -30,6 +30,7 @@
 @import "../blocks/photo-card/__like-icon/_state/photo-card__like-icon_state_active.css";
 @import "../blocks/photo-card/__image/photo-card__image.css";
 @import "../blocks/photo-card/__trash/photo-card__trash.css";
+@import "../blocks/photo-card/__trash/_visible/photo-card__trash_visible.css";
 
 @import "../blocks/footer/__copyright/footer__copyright.css";
 @import "../blocks/footer/footer.css";

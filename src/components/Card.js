@@ -1,12 +1,15 @@
 import PopupDelete from "./PopupDelete";
+import {userId} from "../utils/constants";
 
 class Card {
     constructor(cardData, cardSelector, handleCardClick) {
         this._link = cardData.link;
         this._name = cardData.name;
         this._likes = cardData.likes;
+        this._ownerId = cardData.owner._id;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        console.log(this._id);
     }
 
     createCard = () => {
@@ -14,7 +17,8 @@ class Card {
         const newCard = cardTemplate.content
             .querySelector(".photo-card")
             .cloneNode(true);
-
+        const cardTrashIcon = newCard.querySelector(".photo-card__trash");
+        if (this._isTrashIconShow()) cardTrashIcon.classList.add('photo-card__trash_visible');
         const cardImage = newCard.querySelector(".photo-card__image");
         this._fillCardImage(cardImage);
         newCard.querySelector(".photo-card__title").textContent = this._name;
@@ -22,6 +26,10 @@ class Card {
         this._addEventListeners(newCard);
         return newCard;
     };
+
+    _isTrashIconShow() {
+        return this._ownerId === userId;
+    }
 
     _fillCardImage = (cardImage) => {
         cardImage.src = this._link;
@@ -48,6 +56,7 @@ class Card {
 
     _deleteCard = (e) => {
         const pop = new PopupDelete('.popup-delete');
+        pop.setEventListeners();
         pop.open();
     };
 }
