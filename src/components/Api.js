@@ -1,4 +1,4 @@
-import {authToken, baseUrl} from "../utils/constants";
+import {authToken, baseUrl, groupId} from "../utils/constants";
 
 class Api {
     constructor(options) {
@@ -6,7 +6,7 @@ class Api {
     }
 
     getInitialCards() {
-        return fetch(`${baseUrl}/v1/cohort-42/cards`, {
+        return fetch(`${baseUrl}/v1/${groupId}/cards`, {
             headers: {
                 authorization: authToken
             }
@@ -19,7 +19,7 @@ class Api {
     }
 
     getUserInfo() {
-        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
             headers: {
                 authorization: authToken
             }
@@ -31,8 +31,27 @@ class Api {
         });
     }
 
-    editUserInfo() {
-        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+    setUserInfo(userName, userAbout) {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
+            method: 'PATCH',
+            headers: {
+                authorization: authToken,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: userName,
+                about: userAbout
+            })
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
+
+    setUserAvatar() {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
             headers: {
                 authorization: authToken
             }
@@ -44,24 +63,17 @@ class Api {
         });
     }
 
-    editUserAvatar() {
-        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+    createCard(cardName, cardLink) {
+        return fetch(`${baseUrl}/v1/${groupId}/cards`, {
+            method: 'POST',
             headers: {
-                authorization: authToken
-            }
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        });
-    }
-
-    createCard() {
-        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
-            headers: {
-                authorization: authToken
-            }
+                authorization: authToken,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: cardName,
+                link: cardLink
+            })
         }).then(res => {
             if (res.ok) {
                 return res.json();
@@ -71,7 +83,7 @@ class Api {
     }
 
     deleteCard() {
-        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
             headers: {
                 authorization: authToken
             }
@@ -84,7 +96,7 @@ class Api {
     }
 
     addLike() {
-        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
             headers: {
                 authorization: authToken
             }
@@ -97,7 +109,7 @@ class Api {
     }
 
     removeLike() {
-        return fetch(`${baseUrl}/v1/cohortId/users/me`, {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
             headers: {
                 authorization: authToken
             }
