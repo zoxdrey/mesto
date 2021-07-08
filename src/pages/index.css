@@ -25,9 +25,12 @@
 @import "../blocks/photo-card/__header/photo-card__header.css";
 @import "../blocks/photo-card/__title/photo-card__title.css";
 @import "../blocks/photo-card/__like/photo-card__like.css";
-@import "../blocks/photo-card/__like/_state/photo-card__like_state_active.css";
+@import "../blocks/photo-card/__like-icon/photo-card__like-icon.css";
+@import "../blocks/photo-card/__like-count/photo-card__like-count.css";
+@import "../blocks/photo-card/__like-icon/_state/photo-card__like-icon_state_active.css";
 @import "../blocks/photo-card/__image/photo-card__image.css";
 @import "../blocks/photo-card/__trash/photo-card__trash.css";
+@import "../blocks/photo-card/__trash/_visible/photo-card__trash_visible.css";
 
 @import "../blocks/footer/__copyright/footer__copyright.css";
 @import "../blocks/footer/footer.css";
@@ -42,6 +45,7 @@
 @import "../blocks/popup/__form/popup__form.css";
 @import "../blocks/popup/__form-input/_error/popup__form-input_error_active.css";
 @import "../blocks/popup/__form-error/popup__form-error.css";
+@import "../blocks/popup/__form-title-delete/popup__form-title-delete.css";
 @import "../blocks/popup/__form-error/_active/popup__form-error_active.css";
 @import "../blocks/popup/__form-submit-button/_state/popup__form-submit-button_state_disabled.css";
 
