@@ -44,6 +44,7 @@ apiService.getUserInfo().then((data) => {
 const popupWithImage = new PopupWithImage(".image-overlay");
 popupWithImage.setEventListeners();
 
+
 const popupProfile = new PopupWithForm(".profile-popup", (data) =>
     savePopup(data)
 );
