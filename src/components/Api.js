@@ -1,16 +1,12 @@
-import {authToken, baseUrl, groupId} from "../utils/constants";
+import {baseUrl, groupId} from "../utils/constants";
 
 class Api {
     constructor(options) {
-        this.options = options;
+        this._options = options;
     }
 
     getInitialCards() {
-        return fetch(`${baseUrl}/v1/${groupId}/cards`, {
-            headers: {
-                authorization: authToken
-            }
-        }).then(res => {
+        return fetch(`${baseUrl}/v1/${groupId}/cards`, this._options).then(res => {
             if (res.ok) {
                 return res.json();
             }
@@ -19,11 +15,7 @@ class Api {
     }
 
     getUserInfo() {
-        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
-            headers: {
-                authorization: authToken
-            }
-        }).then(res => {
+        return fetch(`${baseUrl}/v1/${groupId}/users/me`, this._options).then(res => {
             if (res.ok) {
                 return res.json();
             }
@@ -34,10 +26,7 @@ class Api {
     setUserInfo(userName, userAbout) {
         return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
             method: 'PATCH',
-            headers: {
-                authorization: authToken,
-                'Content-Type': 'application/json'
-            },
+            ...this._options,
             body: JSON.stringify({
                 name: userName,
                 about: userAbout
@@ -53,10 +42,7 @@ class Api {
     setUserAvatar(avatarLink) {
         return fetch(`${baseUrl}/v1/${groupId}/users/me/avatar`, {
             method: 'PATCH',
-            headers: {
-                authorization: authToken,
-                'Content-Type': 'application/json'
-            },
+            ...this._options,
             body: JSON.stringify({
                 avatar: avatarLink
             })
@@ -71,10 +57,7 @@ class Api {
     createCard(cardName, cardLink) {
         return fetch(`${baseUrl}/v1/${groupId}/cards`, {
             method: 'POST',
-            headers: {
-                authorization: authToken,
-                'Content-Type': 'application/json'
-            },
+            ...this._options,
             body: JSON.stringify({
                 name: cardName,
                 link: cardLink
@@ -89,9 +72,8 @@ class Api {
 
     deleteCard(cardId) {
         return fetch(`${baseUrl}/v1/${groupId}/cards/${cardId}`, {
-            headers: {
-                authorization: authToken
-            }
+            method: 'DELETE',
+            ...this._options,
         }).then(res => {
             if (res.ok) {
                 return res.json();
@@ -100,11 +82,10 @@ class Api {
         });
     }
 
-    addLike() {
-        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
-            headers: {
-                authorization: authToken
-            }
+    addLike(cardId) {
+        return fetch(`${baseUrl}/v1/${groupId}/cards/likes/${cardId}`, {
+            method: 'PUT',
+            ...this._options,
         }).then(res => {
             if (res.ok) {
                 return res.json();
@@ -113,11 +94,10 @@ class Api {
         });
     }
 
-    removeLike() {
-        return fetch(`${baseUrl}/v1/${groupId}/users/me`, {
-            headers: {
-                authorization: authToken
-            }
+    removeLike(cardId) {
+        return fetch(`${baseUrl}/v1/${groupId}/cards/likes/${cardId}`, {
+            method: 'DELETE',
+            ...this._options,
         }).then(res => {
             if (res.ok) {
                 return res.json();

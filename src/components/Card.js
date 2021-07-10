@@ -1,15 +1,17 @@
-import PopupDelete from "./PopupDelete";
-import {userId} from "../utils/constants";
+import {API_OPTIONS, userId} from "../utils/constants";
+import Api from "./Api";
 
 class Card {
-    constructor(cardData, cardSelector, handleCardClick) {
+    constructor(cardData, cardSelector, handleCardClick, handleDeleteClick) {
         this._link = cardData.link;
         this._name = cardData.name;
         this._likes = cardData.likes;
         this._ownerId = cardData.owner._id;
+        this._cardId = cardData._id;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        console.log(this._id);
+        this._handleDeleteClick = handleDeleteClick;
+        this._apiService = new Api(API_OPTIONS);
     }
 
     createCard = () => {
@@ -39,10 +41,12 @@ class Card {
     _addEventListeners = (card) => {
         card
             .querySelector(".photo-card__like-icon")
-            .addEventListener("click", this._toggleLikeState);
+            .addEventListener("click", (e) => {
+                this._toggleLikeState(e)
+            });
         card
             .querySelector(".photo-card__trash")
-            .addEventListener("click", this._deleteCard);
+            .addEventListener("click", () => this._handleDeleteClick(this._cardId));
         card
             .querySelector(".photo-card__image")
             .addEventListener("click", () =>
@@ -51,14 +55,23 @@ class Card {
     };
 
     _toggleLikeState = (e) => {
-        e.target.classList.toggle("photo-card__like-icon_state_active");
+        if (e.target.classList.contains('photo-card__like-icon_state_active')) {
+            this._apiService.removeLike(this._cardId).then((data) => {
+                    this._likes = data.likes.length;
+                    e.target.classList.toggle("photo-card__like-icon_state_active");
+                    e.target.parentElement.querySelector(".photo-card__like-count").textContent = this._likes;
+                }
+            ).catch(err => console.log(err))
+        } else {
+            this._apiService.addLike(this._cardId).then((data) => {
+                    this._likes = data.likes.length;
+                    e.target.classList.toggle("photo-card__like-icon_state_active")
+                    e.target.parentElement.querySelector(".photo-card__like-count").textContent = this._likes;
+                }
+            ).catch(err => console.log(err))
+        }
     };
 
-    _deleteCard = (e) => {
-        const pop = new PopupDelete('.popup-delete');
-        pop.setEventListeners();
-        pop.open();
-    };
 }
 
 export default Card;
