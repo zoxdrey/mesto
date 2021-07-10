@@ -21,6 +21,11 @@
     <main class="main-content">
       <section class="profile">
         <div class="profile__wrapper">
+          <div class="profile__overlay">
+            <img alt="Редактировать"
+                 class="profile__overlay-edit"
+                 src="<%=require('./images/profile-edit-btn-icon.svg')%>">
+          </div>
           <img
                   alt="Кусто"
                   class="profile__avatar"
@@ -190,6 +195,41 @@
               type="submit"
       >
         Да
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<div class="popup popup-avatar">
+  <div class="popup__container">
+    <button
+            aria-label="Close"
+            class="popup__close-icon popup-avatar__close-icon"
+            type="button"
+    ></button>
+    <form
+            class="popup__form popup-avatar__form"
+            name="popup-avatar-form"
+            novalidate
+    >
+      <h2 class="popup__form-title">Обновить аватар</h2>
+      <input
+              class="popup__form-input popup__form-input_data_avatar-link"
+              id="avatar-link"
+              name="avatar-link"
+              placeholder="Ссылка на аватар"
+              required
+              type="url"
+              value=""
+      />
+      <span class="avatar-link-error popup__form-error"></span>
+      <button
+              aria-label="Save"
+              class="popup__form-submit-button popup-avatar__form-submit-button"
+              type="submit"
+      >
+        Сохранить
       </button>
     </form>
   </div>

@@ -1,6 +1,7 @@
 class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
+        this._popupSubmitBtnTitle = this._popup.querySelector('.popup__form-submit-button');
         this.close = this.close.bind(this);
         this._handleEscClose = this._handleEscClose.bind(this);
     }
@@ -32,6 +33,10 @@ class Popup {
             this.close();
         }
     };
+
+    renderLoading(isLoading) {
+        return isLoading ? this._popupSubmitBtnTitle.textContent = 'Сохранение...' : this._popupSubmitBtnTitle.textContent = 'Сохранение'
+    }
 }
 
 export default Popup;

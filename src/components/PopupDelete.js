@@ -1,21 +1,30 @@
 import Popup from "./Popup";
-import Api from "./Api";
 
 class PopupDelete extends Popup {
-    constructor(popupSelector) {
+    constructor(popupSelector, formSubmitHandler) {
         super(popupSelector);
-        this._api = new Api()
+        this._formSubmitHandler = formSubmitHandler;
+        this._form = this._popup.querySelector(".popup__form");
+        this._cardId = null;
     }
 
 
     setEventListeners() {
         this._form.addEventListener("submit", (e) => {
             e.preventDefault();
-            _api.deleteCard().then()
+            this._formSubmitHandler(this._cardId);
         });
         super.setEventListeners()
     }
 
+    open(cardId) {
+        this._cardId = cardId;
+        super.open();
+    }
+
+    renderLoading(isLoading) {
+        return isLoading ? this._popupSubmitBtnTitle.textContent = 'Удаление...' : this._popupSubmitBtnTitle.textContent = 'Да'
+    }
 
 }
 
