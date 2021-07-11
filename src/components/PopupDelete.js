@@ -5,20 +5,20 @@ class PopupDelete extends Popup {
         super(popupSelector);
         this._formSubmitHandler = formSubmitHandler;
         this._form = this._popup.querySelector(".popup__form");
-        this._cardId = null;
+        this._card = null;
     }
 
 
     setEventListeners() {
         this._form.addEventListener("submit", (e) => {
             e.preventDefault();
-            this._formSubmitHandler(this._cardId);
+            this._formSubmitHandler(this._card);
         });
         super.setEventListeners()
     }
 
-    open(cardId) {
-        this._cardId = cardId;
+    open(card) {
+        this._card = card;
         super.open();
     }
 

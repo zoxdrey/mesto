@@ -105,6 +105,10 @@ class Api {
             return Promise.reject(`Ошибка: ${res.status}`);
         });
     }
+
+    getAllData() {
+        return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+    }
 }
 
 export default Api;
