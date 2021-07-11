@@ -70,19 +70,18 @@ const popupDelete = new PopupDelete(".popup-delete", (data) =>
 );
 popupDelete.setEventListeners();
 
+const cardList = new Section(
+    {
+        renderer: function (cardItem) {
+            cardsContainer.append(createNewCard(cardItem));
+        }
+    },
+    ".photo-cards-list"
+);
 
-function getCardList() {
+const getCardList = () => {
     apiService.getInitialCards().then((data) => {
-        const cardList = new Section(
-            {
-                items: data,
-                renderer: function (cardItem) {
-                    cardsContainer.append(createNewCard(cardItem));
-                },
-            },
-            ".photo-cards-list"
-        );
-        cardList.render();
+        cardList.render(data)
     }).catch(err => console.log(err)).finally(() => {
     });
 }
@@ -104,11 +103,13 @@ const handleAddCard = (data) => {
     apiService.createCard(newCardData.name, newCardData.link).then((data) => {
         popupPlace.renderLoading(false)
         popupPlace.close();
+        cardList.addItem(createNewCard(data));
     }).catch((err) => {
         popupPlace.renderLoading(false)
         console.log(err);
     }).finally(() => {
-        popupPlace.close()
+        popupPlace.close();
+
     });
 };
 
