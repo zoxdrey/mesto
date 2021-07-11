@@ -4,6 +4,7 @@ class PopupDelete extends Popup {
     constructor(popupSelector, formSubmitHandler) {
         super(popupSelector);
         this._formSubmitHandler = formSubmitHandler;
+        this._popupSubmitBtnTitle = this._popup.querySelector('.popup__form-submit-button');
         this._form = this._popup.querySelector(".popup__form");
         this._card = null;
     }

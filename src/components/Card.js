@@ -1,7 +1,5 @@
-import {userId} from "../utils/constants";
-
 class Card {
-    constructor(cardData, cardSelector, handleCardClick, handleDeleteClick, handleLikeClick) {
+    constructor(cardData, cardSelector, handleCardClick, handleDeleteClick, handleLikeClick, userId) {
         this._link = cardData.link;
         this._name = cardData.name;
         this._likes = cardData.likes;
@@ -17,6 +15,7 @@ class Card {
             .cloneNode(true);
         this._likeBtn = this._card.querySelector('.photo-card__like-icon');
         this._isLiked = this._likes.some(item => item._id === userId);
+        this._userId = userId;
     }
 
     createCard = () => {
@@ -34,7 +33,7 @@ class Card {
     };
 
     _isTrashIconShow() {
-        return this._ownerId === userId;
+        return this._ownerId === this._userId;
     }
 
     _fillCardImage = (cardImage) => {

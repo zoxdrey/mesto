@@ -6,9 +6,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import "./index.css";
 import Api from "../components/Api";
-import PopupAvatar from "../components/PopupAvatar";
 import PopupDelete from "../components/PopupDelete";
-import {API_OPTIONS} from "../utils/constants";
+import {API_OPTIONS, config} from "../utils/constants";
 
 const buttonAdd = document.querySelector(".profile__add-button");
 const buttonEdit = document.querySelector(".profile-info__edit-button");
@@ -23,16 +22,6 @@ const formProfile = document.querySelector(".popup__form");
 const formPlace = document.querySelector(".popup-place__form");
 const formAvatar = document.querySelector(".popup-avatar__form");
 const cardsContainer = document.querySelector(".photo-cards-list");
-const popupOverlays = document.querySelectorAll(".popup");
-const config = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__form-input",
-    submitButtonSelector: ".popup__form-submit-button",
-    inactiveButtonClass: "popup__form-submit-button_state_disabled",
-    inputErrorClass: "popup__form-input_error_active",
-    errorClass: "popup__form-error_active",
-    formErrorClass: ".popup__form-error",
-};
 const cardTemplate = "#card-template";
 
 const userInfo = new UserInfo({
@@ -57,14 +46,13 @@ const popupPlace = new PopupWithForm(".popup-place", (data) =>
 popupPlace.setEventListeners();
 
 
-const popupAvatar = new PopupAvatar(".popup-avatar", (data) =>
+const popupAvatar = new PopupWithForm(".popup-avatar", (data) =>
     saveAvatar(data)
 );
 popupAvatar.setEventListeners();
 
-const popupDelete = new PopupDelete(".popup-delete", (data) => {
+const popupDelete = new PopupDelete(".popup-delete", (data) =>
         deleteCard(data)
-    }
     )
 ;
 popupDelete.setEventListeners();
@@ -89,7 +77,7 @@ const getAllData = () => {
 getAllData();
 
 function createNewCard(cardData) {
-    const newCard = new Card(cardData, cardTemplate, openImage, () => popupDelete.open(newCard), () => toggleLike(newCard));
+    const newCard = new Card(cardData, cardTemplate, openImage, () => popupDelete.open(newCard), () => toggleLike(newCard), userInfo.getUserId());
     return newCard.createCard();
 }
 
@@ -99,12 +87,12 @@ const toggleLike = (newCard) => {
         apiService.removeLike(newCard._cardId).then((data) => {
             newCard.setIsLiked();
             newCard.setLikeCount(data.likes.length)
-        })
+        }).catch((err) => console.log(err))
     } else {
         apiService.addLike(newCard._cardId).then((data) => {
             newCard.setIsLiked();
             newCard.setLikeCount(data.likes.length)
-        })
+        }).catch((err) => console.log(err))
     }
 }
 
@@ -115,13 +103,11 @@ const handleAddCard = (data) => {
     newCardData.link = data["place-link"];
     console.log(newCardData)
     apiService.createCard(newCardData.name, newCardData.link).then((data) => {
-        popupPlace.renderLoading(false)
         popupPlace.close();
         cardList.addItem(createNewCard(data));
     }).catch((err) => {
-        popupPlace.renderLoading(false)
         console.log(err);
-    })
+    }).finally(() => popupPlace.renderLoading(false))
 };
 
 const openProfilePopup = () => {
@@ -136,13 +122,10 @@ const savePopupProfile = () => {
     popupProfile.renderLoading(true);
     apiService.setUserInfo(inputUserNameSelector.value, inputProfessionSelector.value).then((data) => {
         userInfo.setUserInfo(data);
-        popupProfile.renderLoading(false);
         popupProfile.close();
     }).catch(err => {
         console.log(err)
-        popupProfile.renderLoading(false);
-    }).finally(() => popupProfile.close());
-
+    }).finally(() => popupPlace.renderLoading(false))
 };
 
 const openPlacePopup = () => {
@@ -151,6 +134,7 @@ const openPlacePopup = () => {
 };
 
 function openAvatarPopup() {
+    formAvatarValidator.resetValidation();
     popupAvatar.open()
 }
 
@@ -158,12 +142,10 @@ function saveAvatar(data) {
     popupAvatar.renderLoading(true);
     apiService.setUserAvatar(data['avatar-link']).then((data) => {
         userInfo.setUserInfo(data);
-        popupAvatar.renderLoading(false);
         popupAvatar.close();
     }).catch((err) => {
         console.log(err)
-        popupProfile.renderLoading(false);
-    })
+    }).finally(() => popupPlace.renderLoading(false))
 }
 
 function openImage(name, link) {
@@ -172,15 +154,13 @@ function openImage(name, link) {
 
 function deleteCard(card) {
     popupDelete.renderLoading(true);
-    apiService.deleteCard(card.getCardId()).then((data) => {
+    apiService.deleteCard(card.getCardId()).then(() => {
         card.deleteCard();
         popupDelete.close();
-        popupDelete.renderLoading(false);
     }).catch((err) => {
             console.log(err)
-            popupProfile.renderLoading(false);
         }
-    )
+    ).finally(() => popupPlace.renderLoading(false))
 }
 
 const formProfileValidator = new FormValidator(config, formProfile);
